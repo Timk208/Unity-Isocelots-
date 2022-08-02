@@ -20948,7 +20948,7 @@ GameObject:
   - component: {fileID: 812593330}
   - component: {fileID: 812593329}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21123,7 +21123,7 @@ GameObject:
   - component: {fileID: 1122620677}
   - component: {fileID: 1122620676}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21143,8 +21143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1122620672}
   moveSpeed: 5
-  h: 0
-  v: 0
+  horizontal: 0
+  vertical: 0
 --- !u!212 &1122620674
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21208,7 +21208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!231 &1122620676
 SpringJoint2D:
@@ -21463,7 +21463,7 @@ Transform:
   m_Children:
   - {fileID: 544071788}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1781359522
 GameObject:

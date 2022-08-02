@@ -12,8 +12,8 @@ public class FollowPointer : MonoBehaviour {
     [SerializeField] GameObject player;
     [SerializeField] float moveSpeed = 5.0f;
 
-    public float h;
-    public float v;
+    public float horizontal;
+    public float vertical;
 
     // Use this for initialization
     void Start () {
@@ -48,8 +48,8 @@ public class FollowPointer : MonoBehaviour {
 
         playerBody.position = Vector2.MoveTowards(playerBody.position, transform.position, move);
 
-        h = (transform.position.x - playerBody.position.x);
-        v = (transform.position.y - playerBody.position.y);
+        horizontal = (transform.position.x - playerBody.position.x);
+        vertical = (transform.position.y - playerBody.position.y);
 
         /*spriteAnim.SetFloat("H", h);
         spriteAnim.SetFloat("V", v);*/
