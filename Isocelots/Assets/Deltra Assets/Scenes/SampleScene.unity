@@ -20946,7 +20946,10 @@ GameObject:
   m_Component:
   - component: {fileID: 812593331}
   - component: {fileID: 812593330}
+  - component: {fileID: 812593332}
   - component: {fileID: 812593329}
+  - component: {fileID: 812593333}
+  - component: {fileID: 812593334}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -20969,6 +20972,7 @@ MonoBehaviour:
   speed: 10
   horizontal: 0
   vertical: 0
+  playerState: {fileID: 812593332}
 --- !u!212 &812593330
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21034,6 +21038,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &812593332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812593328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236fc93c4cca2cc44af7c7bd51a7d4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death: 0
+  busy: 0
+--- !u!114 &812593333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812593328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c68b6529f5f59b47a8be0d4df38e69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerState: {fileID: 812593332}
+--- !u!81 &812593334
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812593328}
+  m_Enabled: 1
 --- !u!1 &1053681486
 GameObject:
   m_ObjectHideFlags: 0
