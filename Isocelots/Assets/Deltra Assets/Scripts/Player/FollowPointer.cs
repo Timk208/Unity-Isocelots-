@@ -6,14 +6,18 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class FollowPointer : MonoBehaviour {
     //private Touch followT;
-   
+    public int Grabstate = 0;
     private Transform playerBody;
     //[SerializeField] Animator spriteAnim;
     [SerializeField] GameObject player;
     [SerializeField] float moveSpeed = 5.0f;
+    public GameObject heldObject;
 
     public float horizontal;
     public float vertical;
+
+    public Rigidbody rb;
+    public float forceAmount = 10;
 
     // Use this for initialization
     void Start () {
@@ -22,8 +26,22 @@ public class FollowPointer : MonoBehaviour {
         //followT = new Touch();
 	}
 
-	// Update is called once per frame
-	void Update () {
+
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.GetComponent<Weight>() && Grabstate == 0)
+        {
+            heldObject = collider.gameObject;
+            Grabstate = collider.GetComponent<Weight>().objectWeight;
+            this.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       
 
         /*if (Input.touchCount > 0)
         {
@@ -39,17 +57,51 @@ public class FollowPointer : MonoBehaviour {
         }*/
 
         //if (Input.GetMouseButtonDown(0))
-       // {
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
-            transform.position = touchPosition;
+        // {
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+        transform.position = touchPosition;
         //}
-        
+
         float move = moveSpeed * Time.deltaTime;
 
         playerBody.position = Vector2.MoveTowards(playerBody.position, transform.position, move);
 
         horizontal = (transform.position.x - playerBody.position.x);
         vertical = (transform.position.y - playerBody.position.y);
+
+        switch (Grabstate)
+        {
+            case 0:
+                break;
+
+            case 1:
+                
+                Rigidbody rigidBody = heldObject.GetComponent<Rigidbody>();
+               
+                rigidBody.transform.LookAt(this.transform);
+                rigidBody.velocity = heldObject.transform.forward * 7;
+
+                
+
+                break;
+        }
+
+        if (Input.GetMouseButtonDown(0) && Grabstate == 0 && heldObject == null && Input.GetMouseButtonDown(1) != true)
+        {
+            this.GetComponent<BoxCollider>().enabled = true;
+        }
+
+        else if (Input.GetMouseButtonUp(0) && Grabstate == 0 && heldObject == null)
+        {
+            this.GetComponent<BoxCollider>().enabled = false;
+        }
+
+        if (Input.GetMouseButtonDown(1) && Grabstate != 0 && heldObject != null)
+        {
+            Grabstate = 0;
+            heldObject = null;
+
+        }
 
         /*spriteAnim.SetFloat("H", h);
         spriteAnim.SetFloat("V", v);*/
