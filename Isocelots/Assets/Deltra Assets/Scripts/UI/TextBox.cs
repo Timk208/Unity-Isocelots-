@@ -43,12 +43,12 @@ public class TextBox : MonoBehaviour
         {
             delay += Time.deltaTime;
 
-            if (delay >= 0.4f)
+            if (delay >= 0.3f)
             {
-                textSpeed = 0.01f;
+                textSpeed = 0.005f;
             }
         }
-        else { delay = 0; textSpeed = 0.06f; }
+        else { delay = 0; textSpeed = 0.05f; }
 
         //Auto-displays the first line of text without Space needing to be pressed. Could most likely be improved.
         if(lineNumber == 0 && isFinished)
