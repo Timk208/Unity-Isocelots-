@@ -38,17 +38,17 @@ public class TextBox : MonoBehaviour
 
     private void Update()
     {
-        //If Space is held down for more than 0.4 seconds, speed up the typewriter effect.
+        //If Space is held down for more than 0.2 seconds, speed up the typewriter effect.
         if(Input.GetKey(KeyCode.Space))
         {
             delay += Time.deltaTime;
 
-            if (delay >= 0.3f)
+            if (delay >= 0.2f)
             {
-                textSpeed = 0.005f;
+                textSpeed = 0.002f;
             }
         }
-        else { delay = 0; textSpeed = 0.05f; }
+        else { delay = 0; textSpeed = 0.03f; }
 
         //Auto-displays the first line of text without Space needing to be pressed. Could most likely be improved.
         if(lineNumber == 0 && isFinished)
