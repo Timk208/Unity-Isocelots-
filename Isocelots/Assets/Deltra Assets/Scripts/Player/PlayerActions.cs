@@ -9,11 +9,6 @@ public class PlayerActions : MonoBehaviour
 
     public GameObject textBox;
 
-    private void Start()
-    {
-        textBox.SetActive(true);
-    }
-
     //Interaction code, checks if player is busy or DEAD
     private void Interact()
     {
@@ -21,13 +16,10 @@ public class PlayerActions : MonoBehaviour
         {
             Debug.Log("Interacted");
 
+
+
             playerState.busy = true;
         }
-    }
-
-    private void InteractText()
-    {
-        textBox.SetActive(true);
     }
 
     private void Update()

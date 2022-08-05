@@ -5,8 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
    
 public class PlayerMovement : MonoBehaviour {
-    
-    private Rigidbody2D thisObject;
+
     // private Animator spwiteAnim;
 
     public float speed;
@@ -19,20 +18,20 @@ public class PlayerMovement : MonoBehaviour {
     private void Start()
     {
         //spwiteAnim = this.gameObject.GetComponent<Animator>();
-
-        thisObject = gameObject.GetComponent<Rigidbody2D>();
     }
 
     //This is the code that allows topdown 2d movement.
     private void Move(Vector2 move)
     {
-        gameObject.GetComponent<Transform>().Translate(move.x * speed * Time.deltaTime, move.y * speed * Time.deltaTime, 0);
+        gameObject.GetComponent<Rigidbody>().velocity = move * speed;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // Read the inputs.
+        // Read the inputs, normalize if diagonal.
         Vector2 movement = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical"));
+
+        if (movement.sqrMagnitude > 1) { movement.Normalize(); }
 
         // Pass all parameters to the character control script.
         if ( playerState.busy == false && playerState.death == false )
