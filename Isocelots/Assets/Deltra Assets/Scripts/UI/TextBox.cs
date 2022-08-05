@@ -49,9 +49,9 @@ public class TextBox : MonoBehaviour
         {
             //Text is queued.
 
-            panel.SetActive(true);
-
             PlayerState.Instance.busy = true;
+
+            panel.SetActive(true);
 
             //If Space is held down for more than 0.2 seconds, speed up the typewriter effect.
             if (Input.GetKey(KeyCode.Space))

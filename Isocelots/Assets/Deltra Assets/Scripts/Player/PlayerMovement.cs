@@ -13,17 +13,30 @@ public class PlayerMovement : MonoBehaviour {
     public float horizontal;
     public float vertical;
 
-    public PlayerState playerState;
+    public float lastDirection;
+
+    private Rigidbody playerRigidbody;
 
     private void Start()
     {
+        playerRigidbody = gameObject.GetComponent<Rigidbody>();
+
         //spwiteAnim = this.gameObject.GetComponent<Animator>();
     }
 
     //This is the code that allows topdown 2d movement.
     private void Move(Vector2 move)
     {
-        gameObject.GetComponent<Rigidbody>().velocity = move * speed;
+        playerRigidbody.velocity = move * speed; //Apparently setting velocity per FixedUpdate is bad, change later?
+    }
+
+    //Sets the last direction player was moving.
+    private void LastDirection()
+    {
+        if (playerRigidbody.velocity != Vector3.zero)
+        {
+            lastDirection = Vector3.SignedAngle(Vector3.up, playerRigidbody.velocity, Vector3.forward);
+        }
     }
 
     private void FixedUpdate()
@@ -34,10 +47,16 @@ public class PlayerMovement : MonoBehaviour {
         if (movement.sqrMagnitude > 1) { movement.Normalize(); }
 
         // Pass all parameters to the character control script.
-        if ( playerState.busy == false && playerState.death == false )
+        if (PlayerState.Instance.busy != true && PlayerState.Instance.death != true)
         {
             Move(movement);
         }
+        else
+        {
+            playerRigidbody.velocity = Vector3.zero;
+        }
+
+        LastDirection();
 
         /* spwiteAnim.SetFloat("H", h);
 

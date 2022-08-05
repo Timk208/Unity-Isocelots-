@@ -4,29 +4,27 @@ using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
 {
-
-    public PlayerState playerState;
+    public InteractCollider interactCollider;
 
     public GameObject textBox;
 
-    //Interaction code, checks if player is busy or DEAD
+    //Interaction code - checks if any interactable objects are available to activate.
     private void Interact()
     {
-        if ( playerState.busy || playerState.death != true )
+        if (interactCollider.interactableObjects.Count != 0)
         {
-            Debug.Log("Interacted");
-
-
-
-            playerState.busy = true;
+            interactCollider.interactableObjects[0].activated = true;
         }
     }
 
     private void Update()
     {
-        if ( Input.GetKeyDown(KeyCode.E) )
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Interact();
+            if(PlayerState.Instance.busy != true && PlayerState.Instance.death != true)
+            {
+                Interact();
+            }
         }
     }
 }
