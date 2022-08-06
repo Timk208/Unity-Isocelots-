@@ -13,7 +13,7 @@ public class PlayerActions : MonoBehaviour
     {
         if (interactCollider.interactableObjects.Count != 0)
         {
-            interactCollider.interactableObjects[0].activated = true;
+            interactCollider.interactableObjects[0].interacted = true;
         }
     }
 

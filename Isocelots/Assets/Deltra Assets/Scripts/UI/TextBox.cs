@@ -18,6 +18,8 @@ public class TextBox : MonoBehaviour
 
     private float delay = 0;
 
+
+
     //Uses a TextObject to add lines of text to the queue.
     public void AddText(TextObject textObject)
     {
@@ -26,6 +28,8 @@ public class TextBox : MonoBehaviour
             queuedText.Add(textLine);
         }
     }
+
+
 
     //Displays a string of text on the textmeshpro component with a typewriter effect.
     private IEnumerator DisplayText(string displayText)
@@ -43,15 +47,21 @@ public class TextBox : MonoBehaviour
         yield return null;
     }
 
+
+
     private void Update()
     {
         if(queuedText.Count != 0)
         {
             //Text is queued.
 
+
+
             PlayerState.Instance.busy = true;
 
             panel.SetActive(true);
+
+
 
             //If Space is held down for more than 0.2 seconds, speed up the typewriter effect.
             if (Input.GetKey(KeyCode.Space))
@@ -65,6 +75,8 @@ public class TextBox : MonoBehaviour
             }
             else { delay = 0; textSpeed = 0.03f; }
 
+
+
             //Auto-displays the first line of text without Space needing to be pressed. Could most likely be improved.
             if (isStart)
             {
@@ -76,6 +88,8 @@ public class TextBox : MonoBehaviour
 
                 StartCoroutine(DisplayText(queuedText[0]));
             }
+
+
 
             //Starts displaying the next line of text if the previous one is finished, and if there's more text to be displayed.
             if (Input.GetKeyDown(KeyCode.Space) && isFinished)
@@ -95,6 +109,8 @@ public class TextBox : MonoBehaviour
         else
         {
             //No text is queued.
+
+
 
             isStart = true;
 
