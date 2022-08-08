@@ -17,3 +17,13 @@ MonoBehaviour:
   - Two big splurgs and a big ass gloopy
   - Three more yoinks and I buy me a smoothie
   - Poured up a gloop that's a gloop and a splurgy
+  hasChoice: 1
+  line: 3
+  choice1: Hello
+  choice2: Team
+  choice3: 
+  choice4: 
+  choiceObj1: {fileID: 0}
+  choiceObj2: {fileID: 0}
+  choiceObj3: {fileID: 0}
+  choiceObj4: {fileID: 0}
