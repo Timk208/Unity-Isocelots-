@@ -10,6 +10,7 @@ public class TextBox : MonoBehaviour
 
     public GameObject panel;
     public TextMeshProUGUI box;
+    public FrameBox frameBox;
 
     private float textSpeed = 0.1f;
 
@@ -52,6 +53,12 @@ public class TextBox : MonoBehaviour
     //Displays a string of text on the textmeshpro component with a typewriter effect.
     private IEnumerator DisplayText(string displayText)
     {
+        //Display frame if one is set.
+        if (queuedText[0].frame != null)
+        {
+            frameBox.frameSprite = queuedText[0].frame;
+        }
+
         //Typewriter effect.
         foreach (char c in displayText) {
 
@@ -63,6 +70,7 @@ public class TextBox : MonoBehaviour
         isFinished = true;
 
         yield return null;
+
     }
 
 
@@ -84,6 +92,8 @@ public class TextBox : MonoBehaviour
             //Starts displaying the next line of text if the previous one is finished, and if there's more text to be displayed.
             if (Input.GetKeyDown(KeyCode.Space) && isFinished || isStart)
             {
+                frameBox.frameSprite = null;
+
                 if (!isStart)
                 {
                     queuedText.RemoveAt(0);
@@ -94,6 +104,8 @@ public class TextBox : MonoBehaviour
                     box.text = "";
 
                     isFinished = false;
+
+                    isStart = false;
 
                     StartCoroutine(DisplayText(queuedText[0].text));
                 }

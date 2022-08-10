@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textData:
   - text: One bad gloop and she do what I yoinky
-    frame: {fileID: 0}
+    frame: {fileID: 21300000, guid: 77bc967f704cce04d90d6d7ce299e66c, type: 3}
     hasChoice: 1
-    choice1: 
-    choice2: 
-    choice3: 
-    choice4: 
+    choice1: Yes
+    choice2: No
+    choice3: Maybe
+    choice4: Yoinky
     choiceObj1: {fileID: 0}
     choiceObj2: {fileID: 0}
     choiceObj3: {fileID: 0}
@@ -36,7 +36,7 @@ MonoBehaviour:
     choiceObj3: {fileID: 0}
     choiceObj4: {fileID: 0}
   - text: Three more yoinks and I buy me a smoothie
-    frame: {fileID: 0}
+    frame: {fileID: 21300000, guid: f07139747eb148c41aa549854ee4adba, type: 3}
     hasChoice: 0
     choice1: 
     choice2: 
@@ -47,8 +47,8 @@ MonoBehaviour:
     choiceObj3: {fileID: 0}
     choiceObj4: {fileID: 0}
   - text: Poured up a gloop that's a gloop and a splurgy
-    frame: {fileID: 0}
-    hasChoice: 1
+    frame: {fileID: 21300000, guid: 77bc967f704cce04d90d6d7ce299e66c, type: 3}
+    hasChoice: 0
     choice1: 
     choice2: 
     choice3: 
