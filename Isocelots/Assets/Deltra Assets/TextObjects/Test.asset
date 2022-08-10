@@ -13,17 +13,47 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   textData:
-  - One bad gloop and she do what I yoinky
-  - Two big splurgs and a big ass gloopy
-  - Three more yoinks and I buy me a smoothie
-  - Poured up a gloop that's a gloop and a splurgy
-  hasChoice: 1
-  line: 3
-  choice1: Hello
-  choice2: Team
-  choice3: 
-  choice4: 
-  choiceObj1: {fileID: 0}
-  choiceObj2: {fileID: 0}
-  choiceObj3: {fileID: 0}
-  choiceObj4: {fileID: 0}
+  - text: One bad gloop and she do what I yoinky
+    frame: {fileID: 0}
+    hasChoice: 1
+    choice1: 
+    choice2: 
+    choice3: 
+    choice4: 
+    choiceObj1: {fileID: 0}
+    choiceObj2: {fileID: 0}
+    choiceObj3: {fileID: 0}
+    choiceObj4: {fileID: 0}
+  - text: Two big splurgs and a big ass gloopy
+    frame: {fileID: 0}
+    hasChoice: 0
+    choice1: 
+    choice2: 
+    choice3: 
+    choice4: 
+    choiceObj1: {fileID: 0}
+    choiceObj2: {fileID: 0}
+    choiceObj3: {fileID: 0}
+    choiceObj4: {fileID: 0}
+  - text: Three more yoinks and I buy me a smoothie
+    frame: {fileID: 0}
+    hasChoice: 0
+    choice1: 
+    choice2: 
+    choice3: 
+    choice4: 
+    choiceObj1: {fileID: 0}
+    choiceObj2: {fileID: 0}
+    choiceObj3: {fileID: 0}
+    choiceObj4: {fileID: 0}
+  - text: Poured up a gloop that's a gloop and a splurgy
+    frame: {fileID: 0}
+    hasChoice: 1
+    choice1: 
+    choice2: 
+    choice3: 
+    choice4: 
+    choiceObj1: {fileID: 0}
+    choiceObj2: {fileID: 0}
+    choiceObj3: {fileID: 0}
+    choiceObj4: {fileID: 0}

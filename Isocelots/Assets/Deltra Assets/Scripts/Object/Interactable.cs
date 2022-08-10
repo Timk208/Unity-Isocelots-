@@ -27,22 +27,22 @@ public class Interactable : MonoBehaviour
 
     [Header("Text Options")]
     [Space(10)]
-    [Tooltip("TextObject to display from.")]
-    [Rename("Text Object")]
-    public TextObject textData;
+    [Tooltip("TextObjects to display.")]
+    [Rename("Text Objects:")]
+    public List<TextObject> textData;
     //[Tooltip("Should the textbox show a frame?")]
     //public bool frame;
 
     [Header("Button Options")]
     [Space(10)]
     [Tooltip("Object to activate.")]
-    [Rename("Object")]
+    [Rename("Object:")]
     public GameObject buttonObject;
 
     [Header("Toggle Options")]
     [Space(10)]
     [Tooltip("Object to toggle.")]
-    [Rename("Object")]
+    [Rename("Object:")]
     public GameObject toggleObject;
 
     [HideInInspector]
@@ -75,7 +75,12 @@ public class Interactable : MonoBehaviour
 
                 case 0: //Text
 
-                    GameObject.Find("TextBox").GetComponent<TextBox>().AddText(textData);
+                    TextBox textBox = GameObject.Find("TextBox").GetComponent<TextBox>();
+
+                    foreach (TextObject textObject in textData)
+                    {
+                        textBox.AddText(textObject);
+                    }
 
                     interacted = false;
 

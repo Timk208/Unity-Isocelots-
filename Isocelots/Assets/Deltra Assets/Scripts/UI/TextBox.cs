@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using TextObjects;
 
 public class TextBox : MonoBehaviour
 {
-    public List<string> queuedText;
+    public List<TextLine> queuedText;
 
     public GameObject panel;
     public TextMeshProUGUI box;
@@ -20,13 +21,30 @@ public class TextBox : MonoBehaviour
 
 
 
-    //Uses a TextObject to add lines of text to the queue.
+    //Adds a TextObject to the queue.
     public void AddText(TextObject textObject)
     {
-        foreach (string textLine in textObject.textData)
+        foreach (TextLine textLine in textObject.textData)
         {
             queuedText.Add(textLine);
         }
+    }
+
+
+
+    //Increases typewritter speed on space hold.
+    private void SpeedText()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            delay += Time.deltaTime;
+
+            if (delay >= 0.2f)
+            {
+                textSpeed = 0.002f;
+            }
+        }
+        else { delay = 0; textSpeed = 0.03f; }
     }
 
 
@@ -51,50 +69,25 @@ public class TextBox : MonoBehaviour
 
     private void Update()
     {
-        if(queuedText.Count != 0)
+        if (queuedText.Count != 0)
         {
             //Text is queued.
-
-
 
             PlayerState.Instance.busy = true;
 
             panel.SetActive(true);
 
-
-
-            //If Space is held down for more than 0.2 seconds, speed up the typewriter effect.
-            if (Input.GetKey(KeyCode.Space))
-            {
-                delay += Time.deltaTime;
-
-                if (delay >= 0.2f)
-                {
-                    textSpeed = 0.002f;
-                }
-            }
-            else { delay = 0; textSpeed = 0.03f; }
-
-
-
-            //Auto-displays the first line of text without Space needing to be pressed. Could most likely be improved.
-            if (isStart)
-            {
-                isStart = false;
-
-                box.text = "";
-
-                isFinished = false;
-
-                StartCoroutine(DisplayText(queuedText[0]));
-            }
+            SpeedText();
 
 
 
             //Starts displaying the next line of text if the previous one is finished, and if there's more text to be displayed.
-            if (Input.GetKeyDown(KeyCode.Space) && isFinished)
+            if (Input.GetKeyDown(KeyCode.Space) && isFinished || isStart)
             {
-                queuedText.RemoveAt(0);
+                if (!isStart)
+                {
+                    queuedText.RemoveAt(0);
+                }
 
                 if (queuedText.Count != 0)
                 {
@@ -102,15 +95,13 @@ public class TextBox : MonoBehaviour
 
                     isFinished = false;
 
-                    StartCoroutine(DisplayText(queuedText[0]));
+                    StartCoroutine(DisplayText(queuedText[0].text));
                 }
             }
         }
         else
         {
-            //No text is queued.
-
-
+            //There's no more text in the queue.
 
             isStart = true;
 
@@ -120,3 +111,4 @@ public class TextBox : MonoBehaviour
         }
     }
 }
+
