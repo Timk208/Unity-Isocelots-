@@ -46,23 +46,23 @@ namespace TextObjects
 
         [Space(10)]
 
-        [Rename("Choice 1 - Object to activate:")]
-        public GameObject choiceObj1;
+        [Rename("Choice 1 - Name of object to activate:")]
+        public string choiceObj1;
 
         [Space(10)]
 
-        [Rename("Choice 2 - Object to activate:")]
-        public GameObject choiceObj2;
+        [Rename("Choice 2 - Name of object to activate:")]
+        public string choiceObj2;
 
         [Space(10)]
 
-        [Rename("Choice 3 - Object to activate:")]
-        public GameObject choiceObj3;
+        [Rename("Choice 3 - Name of object to activate:")]
+        public string choiceObj3;
 
         [Space(10)]
 
-        [Rename("Choice 4 - Object to activate:")]
-        public GameObject choiceObj4;
+        [Rename("Choice 4 - Name of object to activate:")]
+        public string choiceObj4;
     }
 }
 

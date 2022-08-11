@@ -12,11 +12,15 @@ public class TextBox : MonoBehaviour
     public TextMeshProUGUI box;
     public FrameBox frameBox;
 
+    public Choices choices;
+
     private float textSpeed = 0.1f;
 
     private bool isStart = true;
 
     private bool isFinished;
+
+    public bool isAnswered = false;
 
     private float delay = 0;
 
@@ -67,10 +71,18 @@ public class TextBox : MonoBehaviour
             yield return new WaitForSeconds(textSpeed);
         }
 
-        isFinished = true;
+        if (queuedText[0].hasChoice)
+        {
+            choices.ImportChoices(queuedText[0]);
 
-        yield return null;
+            yield return null;
+        }
+        else
+        {
+            isFinished = true;
 
+            yield return null;
+        }
     }
 
 
@@ -90,9 +102,11 @@ public class TextBox : MonoBehaviour
 
 
             //Starts displaying the next line of text if the previous one is finished, and if there's more text to be displayed.
-            if (Input.GetKeyDown(KeyCode.Space) && isFinished || isStart)
+            if (Input.GetKeyDown(KeyCode.Space) && isFinished || isStart || isAnswered)
             {
                 frameBox.frameSprite = null;
+
+                isAnswered = false;
 
                 if (!isStart)
                 {
