@@ -129,11 +129,14 @@ public class TextBox : MonoBehaviour
         {
             //There's no more text in the queue.
 
+            if (!isStart)
+            {
+                PlayerState.Instance.busy = false;
+            }
+
             isStart = true;
 
             panel.SetActive(false);
-
-            PlayerState.Instance.busy = false;
         }
     }
 }
